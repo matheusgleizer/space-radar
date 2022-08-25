@@ -1,0 +1,16 @@
+# POST https://api.spacex.land/graphql/
+# content-type: application/json
+# X-REQUEST-TYPE: GraphQL
+
+# query {
+#     rockets {
+#       name
+#     }
+# }
+
+POST http://localhost:5050/getGoogleImage/
+constent-type: application/json
+
+{
+  "imageName": "rocket"
+}
