@@ -9,8 +9,8 @@ import spaceXMiddleware from "../middleware/spaceX.middleware.js";
 
 var router = express.Router();
 
-router.get("/getMissions", cors(), spaceXMiddleware, getMissions);
+router.post("/getMissions", spaceXMiddleware, getMissions);
 
-router.get("/getRockets", cors(), spaceXMiddleware, getRockets);
+router.post("/getRockets", cors(), spaceXMiddleware, getRockets);
 
 export default router;

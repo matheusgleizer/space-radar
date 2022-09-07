@@ -9,7 +9,7 @@ export const Container = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding-top: 20px;
+  padding-top: 35px;
   margin-bottom: 70px;
 `;
 

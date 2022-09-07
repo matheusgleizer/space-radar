@@ -1,24 +1,29 @@
-import { useContext } from "react";
-import { Container, CardsContainer, Title } from "./rockets.style";
-import { RocketsContext } from "../../contexts/rockets.context";
-import PreviewCard from "../preview-card/preview-card.component";
+import { useContext } from 'react';
+import { RocketsContext } from '../../contexts/rockets.context';
+import PreviewPage from '../../pages/preview/preview.page';
 
 const Rockets = () => {
-  const { rockets, images } = useContext(RocketsContext);
-
-  console.log(rockets);
+  const {
+    rockets,
+    images,
+    query,
+    queryFields,
+    setQueryFields,
+    rocketsQueryFields,
+  } = useContext(RocketsContext);
 
   return (
-    <Container>
-      <Title>Rockets</Title>
-      <CardsContainer>
-        {rockets
-          ? rockets.map((rocket) => (
-          <PreviewCard cardContent={rocket} images={images}/>
-          ))
-          : null}
-      </CardsContainer>
-    </Container>
+    <>
+      <PreviewPage
+        data={rockets}
+        images={images}
+        title='Rockets'
+        queryFields={queryFields}
+        query={query}
+        setQueryFields={setQueryFields}
+        initialQueryFields={rocketsQueryFields}
+      />
+    </>
   );
 };
 
