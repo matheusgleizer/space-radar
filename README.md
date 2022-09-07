@@ -1,14 +1,12 @@
 ## **To run the project please clone the master branch and follow the steps down below:**
 
 #### in the server folder run:
-  >npm install
-  
-  >npm run dev
+  >yarn install
 
 #### in the space-radar folder run:
   >yarn install
   
-  >yarn start
+  >yarn run dev
   
 
 ##### This is a project written in React and Node.js. It fetches and displays data provided by a third-party API using GraphQL as a query language.
