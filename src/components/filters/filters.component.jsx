@@ -8,12 +8,12 @@ const Filters = ({ queryFields, setQueryFields, initialQueryFields }) => {
   const [isFiltered, setIsFiltered] = useState({});
 
   useEffect(() => {
-    initialQueryFields.map((field) => {
-      if (queryFields.includes(field)) {
-        setIsFiltered(prevState => ({...prevState, [field]: true }));
-      } else setIsFiltered(prevState => ({...prevState, [field]: false}));
-    });
-  }, [queryFields]);
+    initialQueryFields.map((field) =>
+      queryFields.includes(field)
+        ? setIsFiltered((prevState) => ({ ...prevState, [field]: true }))
+        : setIsFiltered((prevState) => ({ ...prevState, [field]: false }))
+    );
+  }, [queryFields, initialQueryFields]);
 
   const handleCheckboxChange = (e) => {
     const filtered = e.target.value;
