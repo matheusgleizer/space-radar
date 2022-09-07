@@ -1,23 +1,23 @@
-import { useContext } from "react";
-import { Container, Title, CardsContainer } from "./missions.style";
-import { MissionsContext } from "../../contexts/missions.context";
-import PreviewCard from "../preview-card/preview-card.component";
+import { useContext } from 'react';
+import { Title } from './missions.style';
+import { MissionsContext } from '../../contexts/missions.context';
+import PreviewPage from '../../pages/preview/preview.page';
+import Filters from '../filters/filters.component';
 
 const Missions = () => {
-  const { missions, images } = useContext(MissionsContext);
-  console.log(missions);
+  const { missions, images, query, queryProperties, setQuery } =
+    useContext(MissionsContext);
 
   return (
-    <Container>
+    <>
       <Title>Missions</Title>
-      <CardsContainer>
-        {missions
-          ? missions.map((mission) => (
-              <PreviewCard cardContent={mission} images={images} />
-            ))
-          : null}
-      </CardsContainer>
-    </Container>
+      {/* <Filters
+        queryProperties={queryProperties}
+        query={query}
+        setQuery={setQuery}
+      /> */}
+      <PreviewPage data={missions} images={images} title='Missions' />
+    </>
   );
 };
 

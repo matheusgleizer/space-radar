@@ -1,6 +1,7 @@
 body {
   margin: 0;
-  font-family: Rockwell !important;
+  font-family: -DIN-Bold,Arial,Verdana,sans-serif !important;
+  line-height: 25px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

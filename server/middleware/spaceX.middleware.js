@@ -12,7 +12,7 @@ const apiConfig = (query) => ({
   }),
 });
 
-const rockets = `{
+const rocketsQuery = `{
     rockets {
       name
       country
@@ -22,31 +22,31 @@ const rockets = `{
     }
 }`;
 
-const missions = `{
+const missionsQuery = `{
   missions {
     name
     id
     description
+    manufacturers
   }
 }`
 
 
 const spaceXMiddleware = async (req, res, next) => {
-  console.log(req.query, "aqui");
   const query = req.query.q;
   try {
     if (query === "rockets") {
-      await axios(spaceXApiEndpoint, apiConfig(rockets)).then(
+      await axios(spaceXApiEndpoint, apiConfig(rocketsQuery)).then(
         (res) => (req.data = res.data.data.rockets)
       );
     }
     if (query === "missions") {
-      await axios(spaceXApiEndpoint, apiConfig(missions)).then(
+      await axios(spaceXApiEndpoint, apiConfig(missionsQuery)).then(
         (res) => (req.data = res.data.data.missions)
       );
     }
   } catch (err) {
-    res.err(err);
+    res.status(404)(err.message);
     console.log(err.message, "spaceXMiddleware");
   }
   next();

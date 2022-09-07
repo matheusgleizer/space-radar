@@ -4766,6 +4766,11 @@ globby@^11.0.4, globby@^11.1.0:
     merge2 "^1.4.1"
     slash "^3.0.0"
 
+gql-query-builder@^3.7.1:
+  version "3.7.1"
+  resolved "https://registry.yarnpkg.com/gql-query-builder/-/gql-query-builder-3.7.1.tgz#aec2791357b1c924f0fca1c8e8fd787f1093a649"
+  integrity sha512-5t0A0rNAMlBWM1jbDaLjDp3+jfybbrKlD7Xmc1GSyDsBVUdSpVIfgL4XcfYoweoCQgQQcqEu46LbwHkGWB1onw==
+
 graceful-fs@^4.1.2, graceful-fs@^4.1.6, graceful-fs@^4.2.0, graceful-fs@^4.2.4, graceful-fs@^4.2.6, graceful-fs@^4.2.9:
   version "4.2.10"
   resolved "https://registry.npmjs.org/graceful-fs/-/graceful-fs-4.2.10.tgz"
