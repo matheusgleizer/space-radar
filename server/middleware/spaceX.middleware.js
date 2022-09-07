@@ -13,7 +13,6 @@ const apiConfigConstructor = (query) => ({
 });
 
 const spaceXMiddleware = async (req, res, next) => {
-  console.log(req.body.query);
   const query = req.body.query;
   try {
     await axios(spaceXApiEndpoint, apiConfigConstructor(query)).then(

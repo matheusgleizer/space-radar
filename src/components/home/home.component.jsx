@@ -8,7 +8,6 @@ import {
 } from './home.style';
 
 const Home = () => {
-  console.log('home');
   return (
     <>
       <Title>SpaceX API</Title>
