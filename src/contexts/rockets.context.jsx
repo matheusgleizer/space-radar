@@ -1,6 +1,5 @@
 import { createContext, useEffect, useState } from 'react';
 import axios from 'axios';
-import * as gql from 'gql-query-builder';
 import { rocketsImages } from '../assets/rockets/rocketsImages';
 import { rocketsQueryFields } from '../assets/rockets/rocketsQueryFields';
 import { queryConstructor } from '../utils/queryConstructor';

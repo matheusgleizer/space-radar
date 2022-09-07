@@ -10,7 +10,7 @@ const Card = ({ cardContent, images }) => {
       <Title>{cardContent.name}</Title>
       {cardContentArray.map((cardContentProps, index) => {
         if (cardContentProps[0] === 'name' || cardContentProps[0] === 'id')
-          return;
+          return null;
         return (
           <Content key={index}>
             <Subtitle>{cardContentProps[0].toUpperCase()}</Subtitle>
