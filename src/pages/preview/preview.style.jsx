@@ -12,3 +12,8 @@ export const CardsContainer = styled.div`
     justify-content: center;
     margin-top: 10px;
 `
+
+export const Title = styled.h2`
+    margin-bottom: 40px;
+    padding: 5px;
+`

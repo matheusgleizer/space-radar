@@ -42,7 +42,7 @@ export const Content = styled.div`
 
 export const Subtitle = styled.h2`
   font-size: 13px;
-  min-width: 120px;
+  min-width: 140px;
   text-align: start;
   padding-left: 10px;
   margin: 0;

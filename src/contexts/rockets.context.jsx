@@ -1,15 +1,16 @@
-import { createContext, useEffect, useState } from "react";
-import axios from "axios";
-import { rocketsImages } from "../assets/rockets/rocketsImages";
+import { createContext, useEffect, useState } from 'react';
+import axios from 'axios';
+import * as gql from 'gql-query-builder';
+import { rocketsImages } from '../assets/rockets/rocketsImages';
+import { rocketsQueryFields } from '../assets/rockets/rocketsQueryFields';
+import { queryConstructor } from '../utils/queryConstructor';
+import { axiosConfig } from '../utils/axiosConfig';
 
-const apiEndpoint = "http://localhost:5050/getRockets";
+const apiEndpoint = 'http://localhost:5050/getRockets';
 
-const apiConfig = {
-  method: "Get",
-  headers: {
-    "Content-Type": "application/json",
-  },
-};
+const operation = 'rockets';
+
+const headers = { 'Content-Type': 'application/json' };
 
 export const RocketsContext = createContext({
   rockets: [],
@@ -17,16 +18,29 @@ export const RocketsContext = createContext({
 
 export const RocketsProvider = ({ children }) => {
   const [rockets, setRockets] = useState([]);
-  const [images, setImages] = useState(rocketsImages);
+  const [queryFields, setQueryFields] = useState(rocketsQueryFields);
+  const [query, setQuery] = useState(queryConstructor(operation, queryFields));
+
+  const images = rocketsImages;
 
   useEffect(() => {
-    axios
-      .get(apiEndpoint + "?q=rockets", apiConfig)
-      .then((result) => setRockets(result.data))
+    axios(axiosConfig(apiEndpoint, headers, query))
+      .then((result) => setRockets(result.data.rockets))
       .catch((err) => console.log(err));
-  }, []);
+  }, [query]);
 
-  const value = { rockets, images };
+  useEffect(() => {
+    setQuery(queryConstructor(operation, queryFields))
+  }, [queryFields])
+
+  const value = {
+    rockets,
+    images,
+    query,
+    queryFields,
+    setQueryFields,
+    rocketsQueryFields,
+  };
 
   return (
     <RocketsContext.Provider value={value}>{children}</RocketsContext.Provider>

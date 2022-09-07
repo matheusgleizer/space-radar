@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import logo from "../../assets/rocket-logo-cut.png";
+import logo from "../../assets/logo/rocket-logo-cut.png";
 
 export const CustomLogo = styled.img.attrs({
   src: `${logo}`,

@@ -1,57 +1,44 @@
 import React from 'react';
-import { Container } from './filters.style';
-import * as gql from 'gql-query-builder';
-import { useState, useEffect } from 'react';
+import { Container, FiltersContainer, FilterSpan } from './filters.style';
 
-const queryConstructor = (operation, fields) =>
-  gql.query({
-    operation: operation,
-    fields: fields,
-  });
+const removeField = (fieldsArray, filtered) =>
+  fieldsArray.filter((field) => field != filtered);
 
-const removeField = (fieldsArray, target) =>
-  fieldsArray.filter((field) => field != target);
-
-
-const Filters = ({ queryProperties, query, setQuery }) => {
-  console.log(`queryProps: ${queryProperties} \nquery: ${query}`);
-  const [queryFields, setQueryFields] = useState([]);
-
+const Filters = ({ queryFields, setQueryFields, initialQueryFields }) => {
   const handleCheckboxChange = (e) => {
-    const queryField = e.target.value;
+    const filtered = e.target.value;
     const checked = e.target.checked;
 
     if (checked) {
-      if (queryFields.includes(queryField)) return;
-      setQueryFields([...queryFields, queryField]);
+      if (queryFields.includes(filtered)) return;
+      setQueryFields([...queryFields, filtered]);
     } else {
-      setQueryFields(removeField(queryFields, queryField));
+      setQueryFields(removeField(queryFields, filtered));
     }
   };
 
-  useEffect(() => {
-    setQuery(queryConstructor(query, queryFields))
-    console.log(query)
-  }, [queryFields])
-  
-
   return (
     <Container>
-      {queryProperties
-        ? queryProperties.map((filterValue) => (
-            <div>
-              <span>{filterValue}:</span>
-              <input
-                type='checkbox'
-                name={filterValue}
-                defaultChecked={true}
-                id={filterValue}
-                value={filterValue}
-                onChange={handleCheckboxChange}
-              />
-            </div>
-          ))
-        : null}
+      <FilterSpan>Filters:</FilterSpan>
+      <FiltersContainer>
+        {initialQueryFields
+          ? initialQueryFields.map((filterValue, index) =>
+              filterValue != 'id' && filterValue != 'name' ? (
+                <div className='filter-value' key={index}>
+                  <span>{filterValue}:</span>
+                  <input
+                    type='checkbox'
+                    name={filterValue}
+                    defaultChecked={true}
+                    id={filterValue}
+                    value={filterValue}
+                    onChange={handleCheckboxChange}
+                  />
+                </div>
+              ) : null
+            )
+          : null}
+      </FiltersContainer>
     </Container>
   );
 };
